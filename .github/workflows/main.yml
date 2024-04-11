@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3 #v3 to ensure that everything is run on node16
+      uses: actions/checkout@v4 #v4 to ensure that everything is run on node20
 
     - name: Set up Python
       uses: actions/setup-python@v3 #v3, node12 will be deprecated soon
