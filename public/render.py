@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 
 # create an empty dictionary to store template variables to be passed
-data=dict()
+data = dict()
 
 # add today's date, properly formatted, to the datadict to display at the bottom
 # of the page
@@ -36,23 +36,23 @@ try:
     comparator = lambda key: (order + [Path(key).stem]).index(Path(key).stem)
 except FileNotFoundError:
     comparator = lambda key: key
-for sectionfile in tqdm(sorted(sectionfiles, key=comparator), 
+for sectionfile in tqdm(sorted(sectionfiles, key=comparator),
                         desc='Processing sections'):
     sectionfile = Path(sectionfile)
     fname = sectionfile.stem
-    sectionenv = Environment(loader=BaseLoader, 
+    sectionenv = Environment(loader=BaseLoader,
                              extensions=['jinja2_markdown.MarkdownExtension'],
                              undefined=DebugUndefined)
     sectiontempl = sectionenv.from_string(sectionfile.read_text())
     data['sections'] += [dict(name=fname, content=sectiontempl.render(**data))]
 
 # create a jinja2 environment instance
-jinja_env = Environment(loader=FileSystemLoader('templates'), 
+jinja_env = Environment(loader=FileSystemLoader('templates'),
                         extensions=['jinja2_markdown.MarkdownExtension'],
                         undefined=DebugUndefined)
 # get template
 template = jinja_env.get_template('landing.html')
 
 # render template and output it to index.html, the default page to show
-with Path('index.html').open('w') as out:
+with Path('../_site/index.html').open('w') as out:
     out.write(template.render(**data))

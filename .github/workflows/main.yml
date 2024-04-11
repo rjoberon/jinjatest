@@ -22,6 +22,7 @@ jobs:
 
     - name: Build
       run: |
+        mkdir _site
         cd public/
         python render.py
         cd ..
