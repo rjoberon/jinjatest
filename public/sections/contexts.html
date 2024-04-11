@@ -1,13 +1,13 @@
 Contexts in this repository:
 
-{% for context in contexts %}
+{% for name, context in contexts | dictsort %}
     <div class="group">
         <span class="groupName">
           <div style="font-weight: bold;">{{context.title}}</div>
           <div>{{context.description}}</div>
         </span>
         <div>Source: {{context.source}}</div>
-        <div>File: <a href=""> {{context}}</a> </div>
+        <div>File: <a href=""> {{name}}</a> </div>
     </div>
 {% endfor %}
 
