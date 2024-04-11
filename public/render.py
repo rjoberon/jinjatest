@@ -18,7 +18,7 @@ data['today'] = datetime.date.today().strftime('%Y-%m-%d')
 
 # load contexts
 with open("../contexts.yaml", "r") as f:
-    data.update({"contexts" : yaml.load(f, Loader=yaml.SafeLoader)})
+    data["contexts"] = yaml.load(f, Loader=yaml.SafeLoader)
 
 # scan sections in the sections directory; there will be a section header for
 # each one of these
