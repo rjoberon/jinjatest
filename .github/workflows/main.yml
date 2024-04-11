@@ -27,7 +27,7 @@ jobs:
         cd ..
 
     - name: Deploy
-      uses: actions/upload-pages-artifact
+      uses: actions/upload-github-pages-artifact
 
   deploy:
     needs: build
