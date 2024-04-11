@@ -26,7 +26,7 @@ jobs:
         python render.py
         cd ..
 
-    name: Deploy
+    - name: Deploy
       uses: actions/upload-pages-artifact
 
   deploy:
