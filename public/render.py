@@ -16,15 +16,9 @@ data = dict()
 # of the page
 data['today'] = datetime.date.today().strftime('%Y-%m-%d')
 
-# load assets that can be used by templates. assets are yaml files with data
-for pathname in tqdm(glob('assets/*.y*ml'), desc='Loading assets'):
-    path = Path(pathname)
-    fname = path.stem
-    with path.open('r') as f:
-        assetdata = yaml.load(f, Loader=yaml.SafeLoader)
-    if type(assetdata) is not dict:
-        assetdata = {fname: assetdata}
-    data.update(assetdata)
+# load contexts
+with open("../contexts.yaml", "r") as f:
+    data.update("contexts" : yaml.load(f, Loader=yaml.SafeLoader))
 
 # scan sections in the sections directory; there will be a section header for
 # each one of these

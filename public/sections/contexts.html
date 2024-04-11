@@ -1,0 +1,58 @@
+Contexts in this repository:
+
+{% for context in contexts %}
+    <div class="group">
+        <span class="groupName">
+          <div style="font-weight: bold;">{{context.name}}</div>
+          <div>{{context.description}}</div>
+        </span>
+        <div>Source: {{context.source}}</div>
+        <div>File: <a href=""> {{context}}</a> </div>
+    </div>
+{% endfor %}
+
+
+
+<style>
+    div.group {
+        margin-top: 20pt;
+        margin-bottom: 8pt;
+    }
+
+    div.group > div {
+        margin-top: 4pt;
+        margin-bottom: 12pt;
+    }
+
+    div.project {
+        margin-top: 10pt;
+        margin-bottom: 8pt;
+    }
+
+    div.project > div {
+        margin-top: 4pt;
+        margin-bottom: 12pt;
+    }
+
+    div.link {
+        margin-top: 5pt;
+        margin-bottom: 10pt;
+    }
+
+    span.groupName {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    span.projectName {
+        text-decoration: underline;
+    }
+
+    span.projectName:hover {
+        cursor: pointer;
+    }
+
+    span.projectName:active {
+        color: #000000;
+    }
+</style>
